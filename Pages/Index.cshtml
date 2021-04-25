@@ -4,22 +4,76 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
-<div class="card">
-    @foreach(var item in Model.Livre)
-    { 
-    
-    <div class="card">
-        <img src="@item.image class ="responsive" />
-        <div class="card-body">
-            <h5 class=" card-title"> @item.nomLivre</h5>
+<h1>Index</h1>
 
-        </div>
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<form>
+    <p>
+        <select asp-for="LivreCategories" asp-items="Model.Categories">
+            <option value="">All</option>
+        </select>
+        Nom: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 
-    </div>
-    
-    }
-</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Livre[0].idLivre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Livre[0].isbn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Livre[0].langue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Livre[0].nomLivre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Livre[0].image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Livre[0].Categorie)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Livre)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.idLivre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isbn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.langue)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nomLivre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.image)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categorie)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.idLivre">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.idLivre">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.idLivre">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
