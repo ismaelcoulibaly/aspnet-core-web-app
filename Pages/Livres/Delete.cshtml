@@ -1,0 +1,64 @@
+﻿@page
+@model Bibliotheque.Pages.Livres.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Livre</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Livre.nomLivre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Livre.nomLivre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Livre.langue)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Livre.langue)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Livre.isbn)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Livre.isbn)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Livre.auteur)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Livre.auteur)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Livre.anneePublication)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Livre.anneePublication)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Livre.image)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Livre.image)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Livre.Categorie)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Livre.Categorie)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Livre.idLivre" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

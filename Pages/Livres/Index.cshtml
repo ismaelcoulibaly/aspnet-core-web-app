@@ -1,0 +1,72 @@
+﻿@page
+@model Bibliotheque.Pages.Livres.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Livre[0].nomLivre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Livre[0].langue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Livre[0].isbn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Livre[0].auteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Livre[0].anneePublication)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Livre[0].image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Livre[0].Categorie)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Livre) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nomLivre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.langue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isbn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.auteur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.anneePublication)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.image)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categorie)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.idLivre">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.idLivre">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.idLivre">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
