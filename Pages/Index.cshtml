@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{SearchString?}"
 @model IndexModelLivre
 @{
     ViewData["Title"] = "Home page";
@@ -7,7 +7,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Livres/Create">Create New</a>
 </p>
 <form>
     <p>
@@ -18,62 +18,47 @@
         <input type="submit" value="Filter" />
     </p>
 </form>
+<div class="text-right">
+    <form action="Rechercher" id="rechform" method="get">
+        <label for="categorie">Categorie</label>
+        <select typeof="text" id="Categorie" name="catlist" form="rechform">
+            <option value="1">Informatique</option>
+            <option value="1">Electronique</option>
+            <option value="1">Mathematique</option>
+
+        </select>
+        <input type="submit" />
+    </form>
+</div>
 
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Livre[0].idLivre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Livre[0].isbn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Livre[0].langue)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Livre[0].nomLivre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Livre[0].image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Livre[0].Categorie)
-            </th>
 
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Livre)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.idLivre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.isbn)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.langue)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.nomLivre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.image)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Categorie)
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.idLivre">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.idLivre">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.idLivre">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+
+    <table class="table">
+
+        <tbody>
+            @foreach (var item in Model.Livre)
+            {
+        <th>
+            <img src="@Url.Content(item.image)" alt="Image" width="250" height="280" />
+            <br />
+            <br />
+
+            @*@Html.DisplayFor(modelItem => item.auteur)
+            <a asp-page="./Details" asp-route-id="@item.auteur"></a>
+            <a href="@Url.Action("Details", "Course", new { Id = item.auteur})">@Html.DisplayFor(modelItem => item.auteur)</a>*@
+
+
+            <a  asp-page="Livres/Details" asp-route-id="@item.idLivre">
+                @Html.DisplayFor(modelItem => item.auteur)
+            </a>
+
+
+
+        </th>
+
+
+            }
+        </tbody>
+    </table>
 
