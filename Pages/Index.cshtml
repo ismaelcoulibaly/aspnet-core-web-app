@@ -44,10 +44,7 @@
             <br />
             <br />
 
-            @*@Html.DisplayFor(modelItem => item.auteur)
-            <a asp-page="./Details" asp-route-id="@item.auteur"></a>
-            <a href="@Url.Action("Details", "Course", new { Id = item.auteur})">@Html.DisplayFor(modelItem => item.auteur)</a>*@
-
+         
 
             <a  asp-page="Livres/Details" asp-route-id="@item.idLivre">
                 @Html.DisplayFor(modelItem => item.auteur)
